@@ -14,6 +14,7 @@ import com.example.calculator.databinding.FragmentFirstBinding;
 public class FirstFragment extends Fragment {
 
     private FragmentFirstBinding binding;
+    private String operation="";
 
     @Override
     public View onCreateView(
@@ -158,15 +159,134 @@ public class FirstFragment extends Fragment {
         binding.btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(!binding.txtResult.getText().toString().contains("."))
-                    binding.txtResult.append(".");
+                binding.txtFirstValue.setText(binding.txtResult.getText().toString() + "+");
+                binding.txtResult.setText("0");
+                operation = "+";
+            }
+        });
+
+        binding.btnSub.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                binding.txtFirstValue.setText(binding.txtResult.getText().toString() + "-");
+                binding.txtResult.setText("0");
+                operation = "-";
+            }
+        });
+
+        binding.btnMul.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                binding.txtFirstValue.setText(binding.txtResult.getText().toString() + "*");
+                binding.txtResult.setText("0");
+                operation = "*";
+            }
+        });
+
+        binding.btnDiv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                binding.txtFirstValue.setText(binding.txtResult.getText().toString() + "/");
+                binding.txtResult.setText("0");
+                operation = "/";
+            }
+        });
+
+        binding.btnClear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                binding.txtFirstValue.setText("");
+                binding.txtResult.setText("0");
+            }
+        });
+
+        binding.btnBackSpace.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                binding.txtResult.setText(binding.txtResult.getText().toString().substring(0, binding.txtResult.getText().toString().length() - 1));
             }
         });
     }
 
     private void Calculate()
     {
+        Float a;
+        Float b;
+        Float result;
+        Integer intResult;
+        switch(operation) {
+            case "+" :
+                 a = Float.parseFloat(binding.txtFirstValue.getText().toString().substring(0, binding.txtFirstValue.getText().toString().length() - 1));
+                 b = Float.parseFloat(binding.txtResult.getText().toString());
+                 result = a+b;
+                if(isWhole(result))
+                {
+                    intResult = Math.round(result);
+                    binding.txtFirstValue.append(binding.txtResult.getText().toString());
+                    binding.txtResult.setText(intResult.toString());
+                }
+                else
+                {
+                    binding.txtFirstValue.append(binding.txtResult.getText().toString());
+                    binding.txtResult.setText(result.toString());
+                }
+                break;
 
+            case "-" :
+                 a = Float.parseFloat(binding.txtFirstValue.getText().toString().substring(0, binding.txtFirstValue.getText().toString().length() - 1));
+                 b = Float.parseFloat(binding.txtResult.getText().toString());
+                result = a-b;
+                if(isWhole(result))
+                {
+                    intResult = Math.round(result);
+                    binding.txtFirstValue.append(binding.txtResult.getText().toString());
+                    binding.txtResult.setText(intResult.toString());
+                }
+                else
+                {
+                    binding.txtFirstValue.append(binding.txtResult.getText().toString());
+                    binding.txtResult.setText(result.toString());
+                }
+                break;
+
+            case "*" :
+                 a = Float.parseFloat(binding.txtFirstValue.getText().toString().substring(0, binding.txtFirstValue.getText().toString().length() - 1));
+                 b = Float.parseFloat(binding.txtResult.getText().toString());
+                result = a*b;
+                if(isWhole(result))
+                {
+                    intResult = Math.round(result);
+                    binding.txtFirstValue.append(binding.txtResult.getText().toString());
+                    binding.txtResult.setText(intResult.toString());
+                }
+                else
+                {
+                    binding.txtFirstValue.append(binding.txtResult.getText().toString());
+                    binding.txtResult.setText(result.toString());
+                }
+                break;
+
+            case "/" :
+                 a = Float.parseFloat(binding.txtFirstValue.getText().toString().substring(0, binding.txtFirstValue.getText().toString().length() - 1));
+                 b = Float.parseFloat(binding.txtResult.getText().toString());
+                result = a/b;
+                if(isWhole(result))
+                {
+                    intResult = Math.round(result);
+                    binding.txtFirstValue.append(binding.txtResult.getText().toString());
+                    binding.txtResult.setText(intResult.toString());
+                }
+                else
+                {
+                    binding.txtFirstValue.append(binding.txtResult.getText().toString());
+                    binding.txtResult.setText(result.toString());
+                }
+                break;
+        }
+    }
+
+    public boolean isWhole(float value) {
+        return Math.floor(value) == value;
     }
 
     @Override
