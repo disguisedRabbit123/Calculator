@@ -15,6 +15,7 @@ public class FirstFragment extends Fragment {
 
     private FragmentFirstBinding binding;
     private String operation="";
+    private boolean clicked;
 
     @Override
     public View onCreateView(
@@ -233,42 +234,56 @@ public class FirstFragment extends Fragment {
             public void onClick(View view) {
                 if(binding.txtResult.getText().toString() != "" && binding.txtFirstValue.getText().toString()!="")
                     Calculate();
+                clicked=false;
             }
         });
 
         binding.btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                binding.txtFirstValue.setText(binding.txtResult.getText().toString() + "+");
-                binding.txtResult.setText("0");
-                operation = "+";
+                if(!clicked)
+                {
+                    binding.txtFirstValue.setText(binding.txtResult.getText().toString() + "+");
+                    binding.txtResult.setText("0");
+                    operation = "+";
+                    clicked=true;
+                }
             }
         });
 
         binding.btnSub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                binding.txtFirstValue.setText(binding.txtResult.getText().toString() + "-");
-                binding.txtResult.setText("0");
-                operation = "-";
+                if(!clicked) {
+                    binding.txtFirstValue.setText(binding.txtResult.getText().toString() + "-");
+                    binding.txtResult.setText("0");
+                    operation = "-";
+                    clicked=true;
+                }
             }
         });
 
         binding.btnMul.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                binding.txtFirstValue.setText(binding.txtResult.getText().toString() + "*");
-                binding.txtResult.setText("0");
-                operation = "*";
+                if(!clicked) {
+                    binding.txtFirstValue.setText(binding.txtResult.getText().toString() + "*");
+                    binding.txtResult.setText("0");
+                    operation = "*";
+                    clicked = true;
+                }
             }
         });
 
         binding.btnDiv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                binding.txtFirstValue.setText(binding.txtResult.getText().toString() + "/");
-                binding.txtResult.setText("0");
-                operation = "/";
+                if(!clicked) {
+                    binding.txtFirstValue.setText(binding.txtResult.getText().toString() + "/");
+                    binding.txtResult.setText("0");
+                    operation = "/";
+                    clicked = true;
+                }
             }
         });
 
