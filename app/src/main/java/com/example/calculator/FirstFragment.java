@@ -33,110 +33,190 @@ public class FirstFragment extends Fragment {
         binding.btnOne.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(Integer.parseInt(binding.txtResult.getText().toString()) == 0)
+                if(binding.txtResult.getText().toString().contains("."))
+                {
+                    binding.txtResult.append("1");
+                }
+                else if(Math.floor(Float.parseFloat(binding.txtResult.getText().toString())) == 0)
                 {
                     binding.txtResult.setText("");
+                    binding.txtResult.append("1");
                 }
-               binding.txtResult.append("1");
+                else
+                {
+                    binding.txtResult.append("1");
+                }
             }
         });
 
         binding.btnTwo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(Integer.parseInt(binding.txtResult.getText().toString()) == 0)
+                if(binding.txtResult.getText().toString().contains("."))
+                {
+                    binding.txtResult.append("2");
+                }
+                else if(Math.floor(Float.parseFloat(binding.txtResult.getText().toString())) == 0)
                 {
                     binding.txtResult.setText("");
+                    binding.txtResult.append("2");
                 }
-                binding.txtResult.append("2");
+                else
+                {
+                    binding.txtResult.append("2");
+                }
             }
         });
 
         binding.btnThree.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(Integer.parseInt(binding.txtResult.getText().toString()) == 0)
+                if(binding.txtResult.getText().toString().contains("."))
+                {
+                    binding.txtResult.append("3");
+                }
+                else if(Math.floor(Float.parseFloat(binding.txtResult.getText().toString())) == 0)
                 {
                     binding.txtResult.setText("");
+                    binding.txtResult.append("3");
                 }
-                binding.txtResult.append("3");
+                else
+                {
+                    binding.txtResult.append("3");
+                }
             }
         });
 
         binding.btnFour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(Integer.parseInt(binding.txtResult.getText().toString()) == 0)
+                if(binding.txtResult.getText().toString().contains("."))
+                {
+                    binding.txtResult.append("4");
+                }
+                else if(Math.floor(Float.parseFloat(binding.txtResult.getText().toString())) == 0)
                 {
                     binding.txtResult.setText("");
+                    binding.txtResult.append("4");
                 }
-                binding.txtResult.append("4");
+                else
+                {
+                    binding.txtResult.append("4");
+                }
             }
         });
 
         binding.btnFive.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(Integer.parseInt(binding.txtResult.getText().toString()) == 0)
+                if(binding.txtResult.getText().toString().contains("."))
+                {
+                    binding.txtResult.append("5");
+                }
+                else if(Math.floor(Float.parseFloat(binding.txtResult.getText().toString())) == 0)
                 {
                     binding.txtResult.setText("");
+                    binding.txtResult.append("5");
                 }
-                binding.txtResult.append("5");
+                else
+                {
+                    binding.txtResult.append("5");
+                }
             }
         });
 
         binding.btnSix.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(Integer.parseInt(binding.txtResult.getText().toString()) == 0)
+                if(binding.txtResult.getText().toString().contains("."))
+                {
+                    binding.txtResult.append("6");
+                }
+                else if(Math.floor(Float.parseFloat(binding.txtResult.getText().toString())) == 0)
                 {
                     binding.txtResult.setText("");
+                    binding.txtResult.append("6");
                 }
-                binding.txtResult.append("6");
+                else
+                {
+                    binding.txtResult.append("6");
+                }
             }
         });
 
         binding.btnSeven.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(Integer.parseInt(binding.txtResult.getText().toString()) == 0)
+                if(binding.txtResult.getText().toString().contains("."))
+                {
+                    binding.txtResult.append("7");
+                }
+                else if(Math.floor(Float.parseFloat(binding.txtResult.getText().toString())) == 0)
                 {
                     binding.txtResult.setText("");
+                    binding.txtResult.append("7");
                 }
-                binding.txtResult.append("7");
+                else
+                {
+                    binding.txtResult.append("7");
+                }
             }
         });
 
         binding.btnEight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(Integer.parseInt(binding.txtResult.getText().toString()) == 0)
+                if(binding.txtResult.getText().toString().contains("."))
+                {
+                    binding.txtResult.append("8");
+                }
+                else if(Math.floor(Float.parseFloat(binding.txtResult.getText().toString())) == 0)
                 {
                     binding.txtResult.setText("");
+                    binding.txtResult.append("8");
                 }
-                binding.txtResult.append("8");
+                else
+                {
+                    binding.txtResult.append("8");
+                }
             }
         });
 
         binding.btnNine.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(Integer.parseInt(binding.txtResult.getText().toString()) == 0)
+                if(binding.txtResult.getText().toString().contains("."))
+                {
+                    binding.txtResult.append("9");
+                }
+                else if(Math.floor(Float.parseFloat(binding.txtResult.getText().toString())) == 0)
                 {
                     binding.txtResult.setText("");
+                    binding.txtResult.append("9");
                 }
-                binding.txtResult.append("9");
+                else
+                {
+                    binding.txtResult.append("9");
+                }
             }
         });
 
         binding.btnZero.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(Integer.parseInt(binding.txtResult.getText().toString()) == 0)
+                if(binding.txtResult.getText().toString().contains("."))
+                {
+                    binding.txtResult.append("0");
+                }
+                else if(Math.floor(Float.parseFloat(binding.txtResult.getText().toString())) == 0)
                 {
                     binding.txtResult.setText("");
+                    binding.txtResult.append("0");
                 }
-                binding.txtResult.append("0");
+                else
+                {
+                    binding.txtResult.append("0");
+                }
             }
         });
 
