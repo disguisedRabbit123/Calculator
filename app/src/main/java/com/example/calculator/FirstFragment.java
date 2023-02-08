@@ -11,7 +11,8 @@ import androidx.fragment.app.Fragment;
 import com.example.calculator.databinding.FragmentFirstBinding;
 
 public class FirstFragment extends Fragment {
-
+    // TODO: 09-02-2023 Optimize and minimize the code
+    // TODO: 09-02-2023 Add history to the calculator on history button click, for this make a local storage to store the history.
     private FragmentFirstBinding binding;
     private String operation="";
     private boolean operationClicked = false;
