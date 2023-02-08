@@ -37,6 +37,7 @@ public class FirstFragment extends Fragment {
         binding.btnOne.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                binding.btnClear.setText("C");
                 if(binding.txtResult.getText().toString().contains("."))
                 {
                     binding.txtResult.append("1");
@@ -57,6 +58,7 @@ public class FirstFragment extends Fragment {
         binding.btnTwo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                binding.btnClear.setText("C");
                 if(binding.txtResult.getText().toString().contains("."))
                 {
                     binding.txtResult.append("2");
@@ -76,6 +78,7 @@ public class FirstFragment extends Fragment {
         binding.btnThree.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                binding.btnClear.setText("C");
                 if(binding.txtResult.getText().toString().contains("."))
                 {
                     binding.txtResult.append("3");
@@ -95,6 +98,7 @@ public class FirstFragment extends Fragment {
         binding.btnFour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                binding.btnClear.setText("C");
                 if(binding.txtResult.getText().toString().contains("."))
                 {
                     binding.txtResult.append("4");
@@ -114,6 +118,7 @@ public class FirstFragment extends Fragment {
         binding.btnFive.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                binding.btnClear.setText("C");
                 if(binding.txtResult.getText().toString().contains("."))
                 {
                     binding.txtResult.append("5");
@@ -133,6 +138,7 @@ public class FirstFragment extends Fragment {
         binding.btnSix.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                binding.btnClear.setText("C");
                 if(binding.txtResult.getText().toString().contains("."))
                 {
                     binding.txtResult.append("6");
@@ -152,6 +158,7 @@ public class FirstFragment extends Fragment {
         binding.btnSeven.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                binding.btnClear.setText("C");
                 if(binding.txtResult.getText().toString().contains("."))
                 {
                     binding.txtResult.append("7");
@@ -171,6 +178,7 @@ public class FirstFragment extends Fragment {
         binding.btnEight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                binding.btnClear.setText("C");
                 if(binding.txtResult.getText().toString().contains("."))
                 {
                     binding.txtResult.append("8");
@@ -190,6 +198,7 @@ public class FirstFragment extends Fragment {
         binding.btnNine.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                binding.btnClear.setText("C");
                 if(binding.txtResult.getText().toString().contains("."))
                 {
                     binding.txtResult.append("9");
@@ -209,6 +218,7 @@ public class FirstFragment extends Fragment {
         binding.btnZero.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                binding.btnClear.setText("C");
                 if(binding.txtResult.getText().toString().contains("."))
                 {
                     binding.txtResult.append("0");
@@ -228,6 +238,7 @@ public class FirstFragment extends Fragment {
         binding.btnDecimal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                binding.btnClear.setText("C");
                 if(!binding.txtResult.getText().toString().contains("."))
                     binding.txtResult.append(".");
             }
@@ -324,17 +335,31 @@ public class FirstFragment extends Fragment {
         binding.btnClear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                binding.txtFirstValue.setText("");
-                binding.txtResult.setText("0");
+                operationClicked = false;
+                if(!binding.txtFirstValue.getText().toString().isEmpty() && binding.btnClear.getText().toString().equals("C"))
+                {
+                    binding.txtResult.setText("0");
+                    binding.btnClear.setText("AC");
+                }
+                else
+                {
+                    binding.txtFirstValue.setText("");
+                    binding.txtResult.setText("0");
+                    binding.btnClear.setText("C");
+                }
             }
         });
 
         binding.btnBackSpace.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(binding.txtResult.getText().toString().length() > 1)
+                    binding.txtResult.setText(binding.txtResult.getText().toString().substring(0, binding.txtResult.getText().toString().length() - 1));
+                else
+                {
+                    binding.txtResult.setText("0");
+                }
 
-                binding.txtResult.setText(binding.txtResult.getText().toString().substring(0, binding.txtResult.getText().toString().length() - 1));
             }
         });
     }
