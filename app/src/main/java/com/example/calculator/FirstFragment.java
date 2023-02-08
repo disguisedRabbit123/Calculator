@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.calculator.databinding.FragmentFirstBinding;
 
@@ -15,7 +14,8 @@ public class FirstFragment extends Fragment {
 
     private FragmentFirstBinding binding;
     private String operation="";
-    private boolean clicked;
+    private boolean operationClicked = false;
+    private boolean equalClicked = false;
 
     @Override
     public View onCreateView(
@@ -232,21 +232,30 @@ public class FirstFragment extends Fragment {
         binding.btnEqual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(binding.txtResult.getText().toString() != "" && binding.txtFirstValue.getText().toString()!="")
+                if(binding.txtResult.getText().toString() != "" && binding.txtFirstValue.getText().toString()!="" && !equalClicked)
+                {
                     Calculate();
-                clicked=false;
+                    equalClicked=true;
+                }
+                operationClicked =false;
             }
         });
 
         binding.btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(!clicked)
+                equalClicked=false;
+                if(!operationClicked)
                 {
                     binding.txtFirstValue.setText(binding.txtResult.getText().toString() + "+");
                     binding.txtResult.setText("0");
                     operation = "+";
-                    clicked=true;
+                    operationClicked =true;
+                }
+                else
+                {
+                    binding.txtFirstValue.setText(binding.txtFirstValue.getText().toString().substring(0,binding.txtFirstValue.getText().toString().length()-1)+"+");
+                    operation = "+";
                 }
             }
         });
@@ -254,11 +263,17 @@ public class FirstFragment extends Fragment {
         binding.btnSub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(!clicked) {
+                equalClicked=false;
+                if(!operationClicked) {
                     binding.txtFirstValue.setText(binding.txtResult.getText().toString() + "-");
                     binding.txtResult.setText("0");
                     operation = "-";
-                    clicked=true;
+                    operationClicked =true;
+                }
+                else
+                {
+                    binding.txtFirstValue.setText(binding.txtFirstValue.getText().toString().substring(0,binding.txtFirstValue.getText().toString().length()-1)+"-");
+                    operation = "-";
                 }
             }
         });
@@ -266,11 +281,17 @@ public class FirstFragment extends Fragment {
         binding.btnMul.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(!clicked) {
+                equalClicked=false;
+                if(!operationClicked) {
                     binding.txtFirstValue.setText(binding.txtResult.getText().toString() + "*");
                     binding.txtResult.setText("0");
                     operation = "*";
-                    clicked = true;
+                    operationClicked = true;
+                }
+                else
+                {
+                    binding.txtFirstValue.setText(binding.txtFirstValue.getText().toString().substring(0,binding.txtFirstValue.getText().toString().length()-1)+"*");
+                    operation = "*";
                 }
             }
         });
@@ -278,11 +299,17 @@ public class FirstFragment extends Fragment {
         binding.btnDiv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(!clicked) {
+                equalClicked=false;
+                if(!operationClicked) {
                     binding.txtFirstValue.setText(binding.txtResult.getText().toString() + "/");
                     binding.txtResult.setText("0");
                     operation = "/";
-                    clicked = true;
+                    operationClicked = true;
+                }
+                else
+                {
+                    binding.txtFirstValue.setText(binding.txtFirstValue.getText().toString().substring(0,binding.txtFirstValue.getText().toString().length()-1)+"/");
+                    operation = "/";
                 }
             }
         });
@@ -290,6 +317,7 @@ public class FirstFragment extends Fragment {
         binding.btnClear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                equalClicked=false;
                 binding.txtFirstValue.setText("");
                 binding.txtResult.setText("0");
             }
@@ -298,6 +326,7 @@ public class FirstFragment extends Fragment {
         binding.btnBackSpace.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                equalClicked=false;
                 binding.txtResult.setText(binding.txtResult.getText().toString().substring(0, binding.txtResult.getText().toString().length() - 1));
             }
         });
