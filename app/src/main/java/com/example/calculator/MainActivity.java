@@ -1,5 +1,6 @@
 package com.example.calculator;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import com.google.android.material.snackbar.Snackbar;
@@ -22,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
+
+    Context context = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

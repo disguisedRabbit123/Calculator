@@ -38,6 +38,14 @@
                 android:textSize="48sp"
                 android:layout_alignParentEnd="true"/>
 
+            <Button
+                android:id="@+id/btnHistory"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="H"
+                android:textSize="48sp"
+                android:layout_alignParentEnd="true"/>
+
 
         </TableRow>
 

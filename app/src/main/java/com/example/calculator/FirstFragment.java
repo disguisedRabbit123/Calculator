@@ -1,5 +1,6 @@
 package com.example.calculator;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +10,16 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.calculator.databinding.FragmentFirstBinding;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
 
 public class FirstFragment extends Fragment {
     // TODO: 09-02-2023 Optimize and minimize the code
@@ -20,6 +31,8 @@ public class FirstFragment extends Fragment {
 
     private String firstValue="";
     private String secondValue="";
+
+
 
     @Override
     public View onCreateView(
@@ -251,8 +264,49 @@ public class FirstFragment extends Fragment {
                 if(binding.txtResult.getText().toString() != "" && !binding.txtFirstValue.getText().toString().isEmpty())
                 {
                     Calculate();
+                    String[] files = getActivity().fileList();
+                    String filename = "calcHistory";
+
+                    if(files.length==0)//Create the file
+                    {
+                        File file = new File(getActivity().getFilesDir(), filename);
+                    }
+
+                    try (FileOutputStream fos = getActivity().openFileOutput(filename, Context.MODE_PRIVATE)) {//Write To the file
+                        fos.write(binding.txtFirstValue.getText().toString().getBytes());
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
                 }
                 operationClicked =false;
+            }
+        });
+
+        binding.btnHistory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String filename = "calcHistory";
+                FileInputStream fis = null;
+                try {
+                    fis = getActivity().openFileInput(filename);
+                } catch (FileNotFoundException e) {
+                    throw new RuntimeException(e);
+                }
+                InputStreamReader inputStreamReader = new InputStreamReader(fis, StandardCharsets.UTF_8);
+                StringBuilder stringBuilder = new StringBuilder();
+                try (BufferedReader reader = new BufferedReader(inputStreamReader)) {
+                    String line = reader.readLine();
+                    while (line != null) {
+                        stringBuilder.append(line).append('\n');
+                        line = reader.readLine();
+                    }
+                } catch (IOException e) {
+                    // Error occurred when opening raw file for reading.
+                } finally {
+                    String contents = stringBuilder.toString();
+                }
             }
         });
 
